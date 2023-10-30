@@ -1,5 +1,6 @@
 plugins {
-    id("java")
+    java
+    application
 }
 
 group = "org.hatemogi"
@@ -7,6 +8,10 @@ version = "0.1.0"
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass = "com.hatemogi.main.Main"
 }
 
 dependencies {
