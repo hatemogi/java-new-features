@@ -1,2 +1,2 @@
 rootProject.name = "modules"
-include("util", "main")
+include("running", "util", "main")
