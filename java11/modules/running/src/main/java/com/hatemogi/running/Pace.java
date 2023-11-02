@@ -32,8 +32,8 @@ public final class Pace {
 
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof Pace otherPace)) return false;
-        return this.durationPerK.equals(otherPace.durationPerK);
+        if (!(other instanceof Pace)) return false;
+        return this.durationPerK.equals(((Pace)other).durationPerK);
     }
 
     @Override

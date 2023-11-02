@@ -37,7 +37,7 @@ public final class Distance implements Comparable<Distance> {
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Distance)) return false;
-        return meters == ((Distance) other).meters;
+        return meters == ((Distance)other).meters;
     }
 
     public String toString() {

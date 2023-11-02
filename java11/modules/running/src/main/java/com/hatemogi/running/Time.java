@@ -23,8 +23,8 @@ public class Time {
 
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof Time otherTime)) return false;
-        return t.equals(otherTime.t);
+        if (!(other instanceof Time)) return false;
+        return t.equals(((Time)other).t);
     }
 
     @Override
