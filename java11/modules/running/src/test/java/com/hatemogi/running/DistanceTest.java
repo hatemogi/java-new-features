@@ -17,6 +17,7 @@ public class DistanceTest {
     public void testEquality() {
         Distance d1 = Distance.ofMeter(5000);
         assertEquals(d1, Distance.ofKM(5));
+        assertEquals(d1, Distance.K5);
         assertNotEquals(d1, Distance.ofMeter(5001));
     }
 

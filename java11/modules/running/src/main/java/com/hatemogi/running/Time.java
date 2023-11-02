@@ -17,10 +17,14 @@ public class Time {
         return ofSeconds(min * 60 + sec);
     }
 
+    public static Time of(int hour, int min, int sec) {
+        return ofSeconds((hour * 60 + min) * 60 + sec);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Time otherTime)) return false;
-        return this.t.equals(otherTime.t);
+        return t.equals(otherTime.t);
     }
 
     @Override
@@ -32,9 +36,18 @@ public class Time {
         return t;
     }
 
+    int getSeconds() {
+        return (int)t.getSeconds();
+    }
+
     public String toString() {
-        int sec = (int)t.getSeconds();
-        int min = sec / 60;
-        return String.format("(시간=%d분%02d초)", min, sec % 60);
+        int hour = (int)t.toHours();
+        int min = (int)t.toMinutes() % 60;
+        int sec = (int)t.getSeconds() % 60;
+        String hourS = hour == 0 ? "" : hour + "시간";
+        String minS = min == 0 ? "" : min + "분";
+        String secS = sec == 0 ? "" : sec + "초";
+
+        return String.format("(시간=%s%s%s)", hourS, minS, secS);
     }
 }

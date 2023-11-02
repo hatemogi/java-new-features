@@ -1,7 +1,5 @@
 package com.hatemogi.running;
 
-import java.time.Duration;
-
 public final class Running {
     public static Time elapsed(Pace p, Distance d) {
         int spk = p.getSPK();
@@ -9,14 +7,14 @@ public final class Running {
         return Time.ofSeconds(sec);
     }
 
-    public static Distance distance(Pace p, Duration t) {
+    public static Distance distance(Pace p, Time t) {
         int spk = p.getSPK();
-        int sec = (int)t.getSeconds();
-        return Distance.ofMeter(sec * 1000 / spk );
+        int sec = t.getSeconds();
+        return Distance.ofMeter(sec * 1000 / spk);
     }
 
-    public static Pace pace(Distance d, Duration t) {
+    public static Pace pace(Distance d, Time t) {
         int meters = d.getMeters();
-        return Pace.ofSecPerK((int)t.getSeconds() * 1000 / meters);
+        return Pace.ofSecPerK(t.getSeconds() * 1000 / meters);
     }
 }
