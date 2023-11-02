@@ -1,12 +1,25 @@
 package com.hatemogi.running;
 
+import java.security.Key;
 import java.time.Duration;
 
-public class Pace {
+public final class Pace {
     private Duration durationPerK;
 
-    public Pace(int secondsPerK) {
+    private Pace(int secondsPerK) {
         this.durationPerK = Duration.ofSeconds(secondsPerK);
+    }
+
+    public static Pace ofSecPerK(int spk) {
+        return new Pace(spk);
+    }
+
+    public static Pace ofMinAndSecPerK(int min, int sec) {
+        return new Pace(min * 60 + sec);
+    }
+
+    public static Pace of(int pace) {
+        return ofMinAndSecPerK(pace / 100, pace % 100);
     }
 
     @Override
@@ -23,6 +36,15 @@ public class Pace {
     public String toString() {
         long min = durationPerK.toMinutes();
         long sec = durationPerK.toSecondsPart();
-        return "페이스: " + min + ":" + sec + "sec/1K";
+        return String.format("(페이스=%d%02d/K)", min, sec);
+    }
+
+    /** 시속으로 환산 */
+    public double toKPH() {
+        return 3600.0 / durationPerK.getSeconds();
+    }
+
+    int getSPK() {
+        return (int)durationPerK.getSeconds();
     }
 }
