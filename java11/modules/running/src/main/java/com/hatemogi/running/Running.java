@@ -3,10 +3,10 @@ package com.hatemogi.running;
 import java.time.Duration;
 
 public final class Running {
-    public static Duration elapsed(Pace p, Distance d) {
+    public static Time elapsed(Pace p, Distance d) {
         int spk = p.getSPK();
         int sec = d.getMeters() * spk / 1000;
-        return Duration.ofSeconds(sec);
+        return Time.ofSeconds(sec);
     }
 
     public static Distance distance(Pace p, Duration t) {

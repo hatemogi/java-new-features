@@ -36,7 +36,7 @@ public final class Pace {
     public String toString() {
         long min = durationPerK.toMinutes();
         long sec = durationPerK.toSecondsPart();
-        return String.format("(페이스=%d%02d/K)", min, sec);
+        return String.format("(페이스=%d분%02d초/K)", min, sec);
     }
 
     /** 시속으로 환산 */

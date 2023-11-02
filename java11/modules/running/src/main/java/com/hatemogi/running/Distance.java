@@ -27,7 +27,7 @@ public final class Distance implements Comparable<Distance> {
     }
 
     public String toString() {
-        return "(거리=" + meters + "M)";
+        return String.format("(거리=%.2fKM)", meters / 1000.0);
     }
 
     @Override

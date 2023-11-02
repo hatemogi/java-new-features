@@ -1,3 +1,3 @@
 module com.hatemogi.main {
-    requires com.hatemogi.util;
+    requires com.hatemogi.running;
 }
