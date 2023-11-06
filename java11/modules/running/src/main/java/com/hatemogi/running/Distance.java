@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 public final class Distance implements Comparable<Distance> {
-    private int meters;
+    private final int meters;
     private static NumberFormat formatter;
 
     private Distance(int meters) {

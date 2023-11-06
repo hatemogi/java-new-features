@@ -3,7 +3,7 @@ package com.hatemogi.running;
 import java.time.Duration;
 
 public class Time {
-    private Duration t;
+    private final Duration t;
 
     private Time(Duration t) {
         this.t = t;

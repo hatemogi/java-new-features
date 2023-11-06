@@ -3,7 +3,7 @@ package com.hatemogi.running;
 import java.time.Duration;
 
 public final class Pace {
-    private Duration durationPerK;
+    private final Duration durationPerK;
 
     private Pace(int secondsPerK) {
         this.durationPerK = Duration.ofSeconds(secondsPerK);
