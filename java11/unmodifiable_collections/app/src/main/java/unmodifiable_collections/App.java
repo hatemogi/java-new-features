@@ -2,6 +2,7 @@ package unmodifiable_collections;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -64,15 +65,17 @@ public class App {
     }
 
     void unmodifiableCollectionFromStream() {
+        Predicate<Integer> isOdd = (var n) -> n % 2 == 0;
+
         /* toUnmodifiableList */ {
             var evenList = range(10)
-                    .filter((var n) -> n % 2 == 0)
+                    .filter(isOdd)
                     .collect(Collectors.toUnmodifiableList());
             System.out.println(evenList);
         }
 
         /* toUnmodifiableSet */ {
-            var evenStream = range(9).filter((var n) -> n % 2 == 0);
+            var evenStream = range(9).filter(isOdd);
             var tripleStream = range(9).filter((var n) -> n % 3 == 0);
             var evenAndTriples = Stream.concat(evenStream, tripleStream)
                     .collect(Collectors.toUnmodifiableSet());
@@ -80,10 +83,21 @@ public class App {
         }
 
         /* toUnmodifiableMap */ {
-            var doubles = range(3)
-                    .collect(Collectors.toUnmodifiableMap(Function.identity(), (var n) -> n * 2));
+            Function<Integer, Integer> doubler = (var n) -> n * 2;
+            var collector = Collectors.toUnmodifiableMap(Function.identity(), doubler);
+            var doubles = range(3).collect(collector);
             System.out.println(doubles);
         }
+    }
+
+    void collectionCopyOf() {
+        var evenStream = range(9).filter((var n) -> n % 2 == 0);
+        var tripleStream = range(9).filter((var n) -> n % 3 == 0);
+        var evenAndTripleList = Stream.concat(evenStream, tripleStream)
+                .collect(Collectors.toUnmodifiableList());
+        var evenAndTripleSet = Set.copyOf(evenAndTripleList);
+        System.out.println(evenAndTripleList);
+        System.out.println(evenAndTripleSet);
     }
 
     void run() {
@@ -91,6 +105,7 @@ public class App {
         unmodifiableSet();
         unmodifiableMap();
         unmodifiableCollectionFromStream();
+        collectionCopyOf();
     }
 
     public static void main(String[] args) {
