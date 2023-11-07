@@ -34,10 +34,17 @@ public class App {
         System.out.println("nats.dropWhile(..).takeWhile(..) => " + from5under10);
     }
 
+    void iterateWithPredicate() {
+        var natsUnder5 = Stream.iterate(1, (var n) -> n < 5, (var n) -> n + 1);
+        var list = natsUnder5.collect(Collectors.toUnmodifiableList());
+        System.out.println("Stream.iterate(1, n -> n < 5, n -> n + 1) => " + list);
+    }
+
     void run() {
         ofNullable();
         takeWhile();
         dropWhile();
+        iterateWithPredicate();
     }
 
     public static void main(String[] args) {
