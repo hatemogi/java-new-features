@@ -15,12 +15,18 @@ public class Main {
 
     public static void main(String[] args) {
         elapsed(Pace.P600, Distance.K5);
-        elapsed(Pace.of(450), Distance.K10);
+        elapsed(Pace.of(445), Distance.K10);
+        elapsed(Pace.of(520), Distance.K20);
+        elapsed(Pace.of(600), Distance.HALF);
 
         targetPace(Distance.K10, Time.of(45, 0));
 
         Time sub2 = Time.of(1, 59, 59);
         targetPace(Distance.HALF, sub2);
+
+        Time target = Time.of(1, 49, 59);
+        targetPace(Distance.HALF, target);
+
 
         Time sub4 = Time.of(3, 59, 59);
         targetPace(Distance.FULL, sub4);
