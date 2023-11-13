@@ -60,8 +60,8 @@ public class App {
                 yield 80000;
             case RUN_FULL:
                 yield 100000;
-            // default:
-            //    throw new IllegalStateException("모르는 거리: " + distance);
+            default:
+                throw new IllegalStateException("모르는 거리: " + distance);
         };
         System.out.println(distance + " 참가비 => " + price);
     }
