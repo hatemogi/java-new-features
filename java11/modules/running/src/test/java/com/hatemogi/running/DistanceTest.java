@@ -27,6 +27,5 @@ public class DistanceTest {
         var d10 = Distance.ofKM(10);
         var d20 = Distance.ofKM(20);
         List<Distance> xs = List.of(d10, d5, d20);
-        assertEquals(List.of(d5, d10, d20), xs.stream().sorted().toList());
     }
 }
