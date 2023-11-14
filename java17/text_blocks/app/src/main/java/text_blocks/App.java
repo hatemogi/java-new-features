@@ -47,11 +47,21 @@ public class App {
         System.out.println(hoonmin);
     }
 
+    static void indentedTextBlock() {
+        String indented = """
+            나라의 말이 중국과 달라
+            문자와 서로 통하지 아니하기에,
+            이런 까닭으로 어리석은 백성이 말하고자 할 바가 있어도
+            마침내 제 뜻을 능히 펴지 못하는 사람이 많다.
+            """.indent(4);
+        System.out.println(indented);
+    }
 
     public static void main(String[] args) {
         printTextString1();
         printTextString2();
         printTextString3();
         printTextBlock();
+        indentedTextBlock();
     }
 }
