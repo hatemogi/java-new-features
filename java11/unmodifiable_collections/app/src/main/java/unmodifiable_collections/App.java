@@ -65,21 +65,22 @@ public class App {
     }
 
     void unmodifiableCollectionFromStream() {
-        Predicate<Integer> isOdd = (var n) -> n % 2 == 0;
+        Predicate<Integer> isEven = (var n) -> n % 2 == 0;
+        Predicate<Integer> isOdd = (var n) -> n % 2 == 1;
 
         /* toUnmodifiableList */ {
             var evenList = range(10)
-                    .filter(isOdd)
+                    .filter(isEven)
                     .collect(Collectors.toUnmodifiableList());
-            System.out.println(evenList);
+            System.out.println(evenList); // 2, 4, 6, 8, 10
         }
 
         /* toUnmodifiableSet */ {
-            var evenStream = range(9).filter(isOdd);
-            var tripleStream = range(9).filter((var n) -> n % 3 == 0);
-            var evenAndTriples = Stream.concat(evenStream, tripleStream)
-                    .collect(Collectors.toUnmodifiableSet());
-            System.out.println(evenAndTriples);
+            var oddStream = range(9).filter(isOdd); // 1, 3, 5, 7, 9
+            var tripleStream = range(9).filter((var n) -> n % 3 == 0); // 3, 6, 9
+            var oddAndTriples = Stream.concat(oddStream, tripleStream)
+                    .collect(Collectors.toUnmodifiableSet()); // 1, 3, 5, 6, 7, 9
+            System.out.println(oddAndTriples);
         }
 
         /* toUnmodifiableMap */ {
@@ -91,11 +92,11 @@ public class App {
     }
 
     void collectionCopyOf() {
-        var evenStream = range(9).filter((var n) -> n % 2 == 0);
-        var tripleStream = range(9).filter((var n) -> n % 3 == 0);
+        var evenStream = range(9).filter((var n) -> n % 2 == 0); // 2, 4, 6, 8
+        var tripleStream = range(9).filter((var n) -> n % 3 == 0); // 3, 6, 9
         var evenAndTripleList = Stream.concat(evenStream, tripleStream)
-                .collect(Collectors.toUnmodifiableList());
-        var evenAndTripleSet = Set.copyOf(evenAndTripleList);
+                .collect(Collectors.toUnmodifiableList()); // 2, 4, 6, 8, 3, 6, 9
+        var evenAndTripleSet = Set.copyOf(evenAndTripleList); // 2, 3, 4, 6, 8, 9
         System.out.println(evenAndTripleList);
         System.out.println(evenAndTripleSet);
     }

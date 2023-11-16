@@ -40,7 +40,7 @@ public class App {
         var opt1 = Optional.of("헬로");
         var empty = Optional.<String>empty();
         var opt2 = Optional.of("월드");
-        var list = Stream.of(opt1.stream(), empty.stream(), opt2.stream())
+        var list = Stream.concat(opt1.stream(), Stream.concat(empty.stream(), opt2.stream()))
                 .collect(Collectors.toUnmodifiableList());
         System.out.println("list = " + list);
     }
