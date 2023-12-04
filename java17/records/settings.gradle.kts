@@ -6,4 +6,4 @@
  */
 
 rootProject.name = "records"
-include("app")
+include("running", "app")

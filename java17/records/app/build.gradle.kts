@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":running"))
     // Use JUnit Jupiter for testing.
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.10.1")
@@ -30,7 +31,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass.set("records.App")
+    mainClass.set("com.hatemogi.records.App")
 }
 
 tasks.named<Test>("test") {
